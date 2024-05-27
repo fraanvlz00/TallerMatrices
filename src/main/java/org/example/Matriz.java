@@ -31,7 +31,7 @@ public class Matriz {
         }
     }
 
-    public static void llenarMatriz(int[][] matriz) {
+    public void llenarMatriz(int[][] matriz) {
         Random rand = new Random();
         for (int i = 0; i < matriz.length; i++) {
             int sumaFila = 0;
@@ -39,7 +39,7 @@ public class Matriz {
                 matriz[i][j] = rand.nextInt(10); // 0 <= random <= 9
                 sumaFila += matriz[i][j];
             }
-            if (sumaFila >= 100) {
+            if (validarFila100()) {
                 System.out.println("Fila " + i + " suma " + sumaFila + ", regenerando...");
                 i--; // Si la fila suma más de 100, se regenera
             }
@@ -96,10 +96,9 @@ public class Matriz {
     public static void menuPrincipal() {
         System.out.println("Menú:");
         System.out.println("1. Mostrar fila");
-        System.out.println("2. Mostrar columna");
-        System.out.println("3. Verificar si alguna fila suma más de 100");
-        System.out.println("4. Verificar si la matriz es de tipo cero");
-        System.out.println("5. Salir");
+        System.out.println("2. Mostrar columna");;
+        System.out.println("3. Verificar si la matriz es de tipo cero");
+        System.out.println("4. Salir");
     }
 
     public void menu() {
@@ -123,20 +122,13 @@ public class Matriz {
                     mostrarColumna(col);
                     break;
                 case 3:
-                    if (validarFila100()) {
-                        System.out.println("Hay filas que suman más de 100.");
-                    } else {
-                        System.out.println("No hay filas que sumen más de 100.");
-                    }
-                    break;
-                case 4:
                     if (matrizCero()) {
                         System.out.println("La matriz es de tipo cero.");
                     } else {
                         System.out.println("La matriz no es de tipo cero.");
                     }
                     break;
-                case 5:
+                case 4:
                     System.out.println("Saliendo...");
                     break;
                 default:
